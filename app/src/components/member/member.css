@@ -1,0 +1,25 @@
+
+.member {
+  display: flex;
+  flex-direction: column;
+
+  .full-name {
+    font-size: 35px;
+  }
+
+  .name {
+    margin: 2.5px 0;
+  }
+
+  .member-img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    
+  }
+
+  span {
+    font-size: 17px;
+  }
+}
