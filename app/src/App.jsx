@@ -12,10 +12,15 @@ function App() {
   const [searchName, setSearchName] = useState();
 
   const getMemberData = async (memberName) => {
+    if (typeof memberName != "string" || memberName.length == 0) return;
+
     const response = await axios.get(
-      "http://localhost:8000/member/" + memberName
+      "http://localhost:8000/member/" + memberName.toLowerCase()
     );
-    setMember(response.data);
+
+    if (response.status == 200) {
+      setMember(response.data);
+    }
   };
 
   return (
@@ -38,10 +43,7 @@ function App() {
                   placeholder="Jimin"
                   onChange={(e) => setSearchName(e.target.value)}
                 />
-                <button
-                  type="button"
-                  onClick={() => getMemberData(searchName.toLowerCase())}
-                >
+                <button type="button" onClick={() => getMemberData(searchName)}>
                   Check
                 </button>
               </div>

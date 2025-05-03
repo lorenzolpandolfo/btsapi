@@ -65,7 +65,7 @@ async def get_member(name: str, db: AsyncSession = Depends(get_db)):
     member = result.scalars().first()
 
     if member is None:
-        return HTTPException(status_code=404, detail="Member not found.")
+        raise HTTPException(status_code=404, detail="Member not found.")
 
     return {
         "id": member.id,
