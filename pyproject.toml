@@ -16,7 +16,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "btsapi", from = "src"}]
+packages = [{include = "btsapi", from = "api/src"}]
 
 
 [build-system]

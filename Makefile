@@ -1,20 +1,28 @@
+DOCKER_COMPOSE = cd docker && docker-compose
+API_DIR = cd api/src/btsapi
+APP_DIR = cd app
+
+.PHONY: up down build run run-api run-app
+
+install-poetry:
+	poetry install
+
 up:
-	cd docker && docker-compose up -d
+	$(DOCKER_COMPOSE) up -d
 
 down:
-	cd docker && docker-compose down
+	$(DOCKER_COMPOSE) down
 
 build:
-	cd docker && docker-compose build
+	$(DOCKER_COMPOSE) build
 
-run-api:
-	cd api/src/btsapi && poetry run uvicorn main:app --reload
+run-api: install-poetry
+	$(API_DIR) && poetry run uvicorn main:app --reload
 
 run-app:
-	cd app && npm install && npm run dev
+	$(APP_DIR) && npm install && npm run dev
 
-run:
-	$(MAKE) up
+run: up
 	$(MAKE) run-api &
 	$(MAKE) run-app
 	wait
