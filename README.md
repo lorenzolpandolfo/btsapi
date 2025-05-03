@@ -1,13 +1,13 @@
 # BTS Api
 An API to display BTS musical group members data.
 
-### Running
-Requirements:
+### Requirements
 - poetry
 - docker
 - python >= 3.13
 - npm
 
+### Running
 With Makefile:
 `make run`
 
